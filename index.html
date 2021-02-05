@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="rules.html">
+  <script src="script.js" defer></script>
+  <title>TIC-TAC-TOE</title>
+
+</head>
+<body>
+    <!--Heading of the Game Page -->
+    <h1>TIC TAC TOE</h1>
+    <div class='rules'>
+        <a href="rules.html"><button>Rules</button></a>
+    </div>
+
+    <!-- Gameboard -->
+  <div class="gameBoard" id="gameBoard">
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+  </div>
+
+  <!-- Message of Outcome-->
+  <div class="resulting-message" id="resultingMessage">
+    <div data-resulting-message-text></div>
+    <button id="restartButton">Restart</button>
+  </div>
+</body>
+</html>

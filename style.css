@@ -1,0 +1,187 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+  }
+
+  body{
+      background-color: darkslategrey;
+      margin: 0;
+  }
+
+  
+  h1 {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    border: 1.4px solid black;
+    background-color: cadetblue;
+    margin-top: 0;
+  }
+
+  /* Rules Button*/
+  .rules {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .rules button {
+    font-size: 2rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+  }
+  
+  .rules button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+  }
+
+  /* The Gameboard */
+  .gameBoard {
+    width: 100vw;
+    height: 75vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+  }
+  
+  /* Cells within the gameboard */
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+
+  /*Eliminating the top border of the gameboard */
+  .cell:first-child,
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  
+  /*Eliminating the left side of the gameboard */
+  .cell:nth-child(3n + 1) {
+    border-left: none;
+  }
+  
+  /*Eliminating the right side of the gameboard */
+  .cell:nth-child(3n + 3) {
+    border-right: none;
+  }
+  
+  /*Eliminating the bottom border of the gameboard */
+  .cell:last-child,
+  .cell:nth-child(8),
+  .cell:nth-child(7) {
+    border-bottom: none;
+  }
+  
+  /* The game pieces*/
+  .cell.x,
+  .cell.circle {
+    cursor: not-allowed;
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .cell.circle::before {
+    background-color: black;
+  }
+  
+  .gameBoard.x .cell:not(.x):not(.circle):hover::before,
+  .gameBoard.x .cell:not(.x):not(.circle):hover::after,
+  .gameBoard.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: darkgray;
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .gameBoard.x .cell:not(.x):not(.circle):hover::before,
+  .gameBoard.x .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+  }
+  
+  .cell.x::before,
+  .gameBoard.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+  }
+  
+  .cell.x::after,
+  .gameBoard.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+  }
+  
+  .cell.circle::before,
+  .cell.circle::after,
+  .gameBoard.circle .cell:not(.x):not(.circle):hover::before,
+  .gameBoard.circle .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .cell.circle::before,
+  .gameBoard.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+  }
+  
+  .cell.circle::after,
+  .gameBoard.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color:blue;
+  }
+  
+  /* Displaying the Result of the Game*/
+  .resulting-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    justify-content: center;
+    align-items: center;
+    color: ghostwhite;
+    font-size: 6rem;
+    flex-direction: column;
+  }
+  
+  /*Button to Restart the Game*/
+  .resulting-message button {
+    font-size: 2.1rem;
+    background-color: linen;
+    border: 1px solid black;
+    padding: .30em .5em;
+    cursor: pointer;
+  }
+  
+  .resulting-message button:hover {
+    background-color: darkred;
+    color: white;
+    border-color: white;
+    font-family: 'Crete Round', serif;
+  }
+  
+  .resulting-message.show {
+    display: flex;
+  }
